@@ -1,0 +1,17 @@
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+button {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+input:focus {
+    outline: 2px solid #ea580c;
+}

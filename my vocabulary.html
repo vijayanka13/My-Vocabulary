@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vocabulary Learning App</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-amber-200 text-gray-800">
+
+    <header class="bg-orange-600 text-white p-5 text-center">
+        <h1 class="text-3xl font-bold">My Vocabulary</h1>
+        <p>Learn a new word every day!</p>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-5">
+
+        <!-- Statistics -->
+
+        <div class="grid grid-cols-3 gap-3 my-6">
+
+            <div class="bg-white p-4 rounded shadow text-center">
+                <h2 id="totalWords" class="text-2xl font-bold">0</h2>
+                <p>Saved Words</p>
+            </div>
+
+            <div class="bg-white p-4 rounded shadow text-center">
+                <h2 id="totalQuiz" class="text-2xl font-bold">0</h2>
+                <p>Quiz Attempts</p>
+            </div>
+
+            <div class="bg-white p-4 rounded shadow text-center">
+                <h2 id="accuracy" class="text-2xl font-bold">0%</h2>
+                <p>Accuracy</p>
+            </div>
+
+        </div>
+
+        <!-- Navigation -->
+
+        <div class="flex flex-wrap gap-3 mb-6">
+
+            <button onclick="showSection('searchSection')"
+                class="bg-orange-600 text-white px-5 py-2 rounded">
+                Search Word
+            </button>
+
+            <button onclick="showSection('savedSection')"
+                class="bg-orange-600 text-white px-5 py-2 rounded">
+                My Words
+            </button>
+
+            <button onclick="showSection('quizSection')"
+                class="bg-orange-600 text-white px-5 py-2 rounded">
+                Quiz
+            </button>
+
+        </div>
+
+        <!-- Search Section -->
+
+        <section id="searchSection" class="bg-white p-6 rounded shadow">
+
+            <h2 class="text-2xl font-bold mb-4">Search a Word</h2>
+
+            <div class="flex gap-2">
+
+                <input id="wordInput"
+                    type="text"
+                    placeholder="Enter a word..."
+                    class="border p-3 rounded w-full">
+
+                <button onclick="searchWord()"
+                    class="bg-orange-600 text-white px-5 rounded">
+                    Search
+                </button>
+
+            </div>
+
+            <div id="wordResult" class="mt-5"></div>
+
+        </section>
+
+        <!-- Saved Words Section -->
+
+        <section id="savedSection"
+            class="hidden bg-white p-6 rounded shadow">
+
+            <h2 class="text-2xl font-bold mb-4">My Words</h2>
+
+            <input id="savedSearch"
+                type="text"
+                placeholder="Search saved words..."
+                oninput="showSavedWords()"
+                class="border p-3 rounded w-full mb-4">
+
+            <div id="savedList"></div>
+
+        </section>
+
+        <!-- Quiz Section -->
+
+        <section id="quizSection"
+            class="hidden bg-white p-6 rounded shadow">
+
+            <h2 class="text-2xl font-bold mb-4">Vocabulary Quiz</h2>
+
+            <p class="mb-4">
+                Guess the word from its definition.
+            </p>
+
+            <div id="quizQuestion" class="text-lg mb-4">
+                Click Start Quiz to begin.
+            </div>
+
+            <button onclick="startQuiz()"
+                class="bg-orange-600 text-white px-5 py-2 rounded">
+                Start Quiz
+            </button>
+
+            <div id="quizAnswer" class="mt-4"></div>
+
+        </section>
+
+    </main>
+
+    <script src="js/script.js"></script>
+
+
+</body>
+</html>
