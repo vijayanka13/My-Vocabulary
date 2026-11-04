@@ -65,8 +65,6 @@ async function searchWord() {
         let meaning = wordData.meanings[0];
         let definition = meaning.definitions[0].definition;
 
-        let audio = wordData.phonetics.find(item => item.audio)?.audio;
-
         let example = meaning.definitions.find(item => item.example)?.example || "No example available.";
 
         result.innerHTML = `
@@ -86,15 +84,8 @@ async function searchWord() {
                 <b>Example:</b> ${example}
             </p>
 
-            ${audio ? `
-                <button onclick="playAudio('${audio}')"
-                    class="bg-green-600 text-white px-4 py-2 rounded mt-3">
-                    Play Pronunciation
-                </button>
-            ` : ""}
-
             <button onclick="saveWord('${wordData.word}', '${definition.replace(/'/g, "\\'")}', '${meaning.partOfSpeech}')"
-                class="bg-orange-600 text-white px-4 py-2 rounded mt-3">
+                class="bg-blue-600 text-white px-4 py-2 rounded mt-3">
                 Save Word
             </button>
         `;
@@ -105,17 +96,6 @@ async function searchWord() {
             "<p class='text-red-600'>Unable to fetch word. Try again.</p>";
 
     }
-}
-
-
-// Play pronunciation
-
-function playAudio(audioUrl) {
-
-    let audio = new Audio(audioUrl);
-
-    audio.play();
-
 }
 
 
@@ -221,7 +201,7 @@ function startQuiz() {
     currentWord = savedWords[Math.floor(Math.random() * savedWords.length)];
 
     question.innerHTML = `
-        <div class="bg-orange-50 p-5 rounded">
+        <div class="bg-blue-50 p-5 rounded">
             <b>Definition:</b>
             <p>${currentWord.definition}</p>
         </div>
